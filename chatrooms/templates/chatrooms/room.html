@@ -1,0 +1,41 @@
+{% extends "chatrooms/base.html" %}
+
+{% block extra_headers %}
+    <!-- <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/css/room_page.css"> -->
+    <script type="text/javascript">
+        getContext = function(){
+            return {
+                "username": "{{ user.username }}",
+                "room_id": {{ room.id }},
+            }
+        }
+    </script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/room.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/room.css">
+{% endblock %}
+
+
+{% block content %}
+<div id="chatContent"style = "max-height:500px">
+	<h3>Hill Cipher crypto chat</h3>
+    <p>Your Key(Enter 4 integers separated by space for 2x2 matrix)</p>
+    <textarea id = "key"></textarea>
+    <br>
+        <div id="chat" >
+            <div id="chatText"></div>
+            <div id="chatInput">
+                <input id="chatSendText" name="chatSendText" type="text" >
+                <input id="chatSendButton" type="button" value="Send">
+            </div>
+        </div>
+        <div id="connectedUsers">
+            <p id="connectedUsersTitle">Connected users</p>
+            <ol id="connectedUsersList">
+            </ol>
+    </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}
